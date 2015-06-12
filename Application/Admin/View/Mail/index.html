@@ -1,0 +1,61 @@
+<extend name="Public/base"/>
+
+<block name="body">
+	<div class="main-title">
+		<h2>邮箱配置</h2>
+	</div>
+	<form action="{:U()}" method="post" class="form-horizontal">
+		<div class="form-item">
+			<label class="item-label">SMTP服务器<span class="check-tips"></span></label>
+			<div class="controls">
+			<input type="hidden" class="text input-large" name="setname" value="mail">
+			<input type="hidden" class="text input-large" name="sid" value="{$mail.sid|default=''}">
+				<input type="text" class="text input-large" name="EMAILHOST" value="{$mail.EMAILHOST|default='smtp.163.com'}">
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">SMTP服务端口<span class="check-tips">（一般为25）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="EMAILPORT" value="{$mail.EMAILPORT|default='25'}">
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">发送邮箱账号<span class="check-tips">（用于分组显示的顺序）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="EMAILUSER" value="{$mail.EMAILUSER|default='blackday1990@163.com'}">
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">用户名<span class="check-tips">（用于分组显示的顺序）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="EMAILNAME" value="{$mail.EMAILNAME|default='blackday1990@163.com'}">
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">邮箱密码<span class="check-tips">（用于分组显示的顺序）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="EMAILPWD" value="{$mail.EMAILPWD|default='dc1990'}">
+			</div>
+		</div>
+		<div class="form-item">
+			<label class="item-label">测试邮箱<span class="check-tips">（用于分组显示的顺序）</span></label>
+			<div class="controls">
+				<input type="text" class="text input-large" name="TOEMAIL" value="{$mail.TOEMAIL|default='384652412@qq.com'}">
+			</div>
+		</div>
+		<div class="form-item">
+			<input type="hidden" name="id" value="{$info.id|default=''}">
+			<button class="btn submit-btn ajax-post" id="submit" type="submit" target-form="form-horizontal">确 定</button>
+			<button class="btn btn-return" onclick="javascript:history.back(-1);return false;">返 回</button>
+		</div>
+	</form>
+</block>
+
+<block name="script">
+	<script type="text/javascript">
+		Think.setValue("type", {$info.type|default=0});
+		Think.setValue("group", {$info.group|default=0});
+		//导航高亮
+		highlight_subnav('{:U('Mail/index')}');
+	</script>
+</block>
